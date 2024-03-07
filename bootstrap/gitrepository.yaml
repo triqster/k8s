@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: kube
+  namespace: flux
+spec:
+  interval: 30m
+  url: https://github.com/triqster/k8s.git
+  ref:
+    branch: main
