@@ -36,8 +36,7 @@ spec:
       hosts:
         - host: ${hostname}
           paths:
-            - path: /
-              pathType: Prefix
+            - /
       tls:
         - secretName: ${name}-tls
           hosts:
