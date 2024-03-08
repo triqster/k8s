@@ -14,10 +14,9 @@ spec:
     - name: ingress-nginx
   chart:
     spec:
-      chart: ${name}
-      # version: 4.1.1
+      chart: .
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: ${name}
       interval: 1h
   targetNamespace: ${namespace}
