@@ -42,7 +42,6 @@ spec:
           - secretName: ${name}-tls
             hosts:
               - ${hostname}
-        https: true
     postgresql:
       enabled: true
       auth:
