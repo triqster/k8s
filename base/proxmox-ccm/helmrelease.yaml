@@ -32,6 +32,6 @@ spec:
           - matchExpressions:
             - key: node-role.kubernetes.io/control-plane
               operator: Exists
-    logVerbosityLevel: 9
+    logVerbosityLevel: 4
     enabledControllers:
       - cloud-node-lifecycle
