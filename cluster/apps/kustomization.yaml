@@ -5,3 +5,5 @@ resources:
   - ntfy.yaml
   - uptime-kuma-secrets.yaml
   - uptime-kuma.yaml
+  - gitea-secrets.yaml
+  - gitea.yaml
