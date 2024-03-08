@@ -1,0 +1,47 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: ${name}
+  namespace: flux
+spec:
+  interval: 1h
+  releaseName: ${name}
+  dependsOn:
+    - name: nfs-subdir-external-provisioner
+    - name: cert-manager
+    - name: ingress-nginx
+  targetNamespace: ${namespace}
+  storageNamespace: ${namespace}
+  chart:
+    spec:
+      chart: ${name}
+      version: 0.1.5
+      sourceRef:
+        kind: HelmRepository
+        name: ${name}
+      interval: 1h
+  values:
+    securityContext:
+      capabilities:
+        drop:
+        - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+    ingress:
+      enabled: true
+      className: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: ${issuer}
+      hosts:
+        - host: ${hostname}
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: ${name}-tls
+          hosts:
+            - ${hostname}
+    persistence:
+      enabled: true
+      size: 1Gi
