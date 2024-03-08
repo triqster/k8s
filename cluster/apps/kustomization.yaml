@@ -7,3 +7,5 @@ resources:
   - uptime-kuma.yaml
   - gitea-secrets.yaml
   - gitea.yaml
+  - authentik.yaml
+  - authentik-secrets.yaml
