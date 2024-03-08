@@ -10,11 +10,11 @@ spec:
   releaseName: ${proxmox_ccm_name}
   chart:
     spec:
-      chart: charts/proxmox-cloud-controller-manager
+      chart: ${proxmox_ccm_name}
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: ${proxmox_ccm_name}
-      interval: 1h
+      version: "0.2.0"
   targetNamespace: ${proxmox_ccm_namespace}
   storageNamespace: ${proxmox_ccm_namespace}
   values:
