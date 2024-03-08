@@ -24,11 +24,11 @@ spec:
   storageNamespace: ${namespace}
   values:
     authentik:
-        secret_key: ${secretkey}
-        error_reporting:
-          enabled: false
-        postgresql:
-          password: ${dbPassword}
+      secret_key: ${secretkey}
+      error_reporting:
+        enabled: false
+      postgresql:
+        password: ${dbPassword}
     server:
       ingress:
         annotations:
