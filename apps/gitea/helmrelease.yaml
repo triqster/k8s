@@ -47,6 +47,9 @@ spec:
         username: ${adminUsername}
         password: ${adminPassword}
         adminEmail: ${adminEmail}
+      config:
+        server:
+          LANDING_PAGE: explore
     postgresql-ha:
       enabled: false
     postgresql:
