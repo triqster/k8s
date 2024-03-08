@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: ${proxmox_ccm_name}
+  namespace: flux
+spec:
+  interval: 1h
+  install:
+    timeout: 50m
+  releaseName: ${proxmox_ccm_name}
+  chart:
+    spec:
+      chart: charts/proxmox-cloud-controller-manager
+      sourceRef:
+        kind: GitRepository
+        name: ${proxmox_ccm_name}
+      interval: 1h
+  targetNamespace: ${proxmox_ccm_namespace}
+  storageNamespace: ${proxmox_ccm_namespace}
+  values:
+    config:
+      clusters:
+        - url: ${proxmox_api_url}
+          insecure: true
+          token_id: "kubernetes@pve!ccm"
+          token_secret: ${proxmox_ccm_token}
+          region: ${proxmox_ccm_cluster}
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: node-role.kubernetes.io/control-plane
+              operator: Exists
+    logVerbosityLevel: 4
+    enabledControllers:
+      - cloud-node-lifecycle

@@ -9,3 +9,4 @@ resources:
   - nfs-subdir-external-provisioner
   - node-feature-discovery
   - qemu-guest-agent
+  - proxmox-ccm

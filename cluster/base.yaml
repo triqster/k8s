@@ -15,3 +15,7 @@ spec:
   path: ./base
   prune: false
   timeout: 5m
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: secrets

@@ -1,0 +1,15 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: ${proxmox_ccm_name}
+  namespace: flux
+spec:
+  interval: 1h
+  url: https://github.com/sergelogvinov/proxmox-cloud-controller-manager
+  ref:
+    branch: main
+  ignore: |-
+    # exclude all
+    /*
+    # include charts directory
+    !/charts/
