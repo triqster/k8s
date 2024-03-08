@@ -9,3 +9,5 @@ resources:
   - gitea.yaml
   - authentik.yaml
   - authentik-secrets.yaml
+  - netbox-secrets.yaml
+  - netbox.yaml
