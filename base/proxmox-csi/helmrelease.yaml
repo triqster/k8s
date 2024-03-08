@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: ${proxmox_csi_name}
+  namespace: flux
+spec:
+  interval: 1h
+  install:
+    timeout: 50m
+  releaseName: ${proxmox_csi_name}
+  chart:
+    spec:
+      chart: charts/${proxmox_csi_name}
+      sourceRef:
+        kind: GitRepository
+        name: ${proxmox_csi_name}
+      interval: 1h
+  targetNamespace: ${proxmox_csi_namespace}
+  storageNamespace: ${proxmox_csi_namespace}
+  values:
+    config:
+      clusters:
+        - url: ${proxmox_api_url}
+          insecure: true
+          token_id: "kubernetes-csi@pve!csi"
+          token_secret: ${proxmox_csi_token}
+          region: ${proxmox_ccm_cluster}
+    storageClass:
+      - name: proxmox-data-xfs
+        storage: data
+        reclaimPolicy: Delete
+        fstype: xfs

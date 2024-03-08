@@ -10,3 +10,4 @@ resources:
   - node-feature-discovery
   - qemu-guest-agent
   - proxmox-ccm
+  - proxmox-csi
