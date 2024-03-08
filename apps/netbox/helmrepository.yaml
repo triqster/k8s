@@ -6,3 +6,5 @@ metadata:
 spec:
   interval: 1h
   url: https://charts.boo.tc
+  ref:
+    commit: 12370a32cd068d00fa86c75e7850095e04079d9c
