@@ -50,6 +50,12 @@ spec:
       config:
         server:
           LANDING_PAGE: explore
+        repository:
+          FORCE_PRIVATE: true
+        service:
+          DEFAULT_ORG_VISIBILITY: private
+          DEFAULT_ORG_MEMBER_VISIBLE: false
+          REQUIRE_SIGNIN_VIEW: true
     postgresql-ha:
       enabled: false
     postgresql:
