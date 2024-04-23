@@ -11,3 +11,5 @@ resources:
   - authentik-secrets.yaml
   - netbox-secrets.yaml
   - netbox.yaml
+  - nextcloud-secrets.yaml
+  - nextcloud.yaml
